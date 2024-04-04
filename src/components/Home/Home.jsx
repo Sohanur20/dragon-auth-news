@@ -16,7 +16,7 @@ const Home = () => {
 
             <div className="grid md:grid-cols-4 grid-cols-1 gap-10">
 
-                <div className="border-2 border-gray-700">
+                <div className="">
                     <LeftSideNav></LeftSideNav>
                 </div>
 
