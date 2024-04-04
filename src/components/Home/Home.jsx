@@ -27,7 +27,7 @@ const Home = () => {
 
 
 
-                <div className="border-2 border-gray-700">
+                <div className="">
                     <RightSideNav></RightSideNav>
                 </div>
 
