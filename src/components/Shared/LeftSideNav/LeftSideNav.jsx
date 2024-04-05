@@ -28,7 +28,8 @@ const LeftSideNav = () => {
                     categories.map(category => <Link
                         to={ `/category/${category.id}`}
                         key={category.id}
-                        className="flex  mt-10 ml-10 font-bold"
+                        className="flex  ml-10 font-bold hover:shadow-lg p-6 hover:bg-zinc-200
+                        rounded-xl"
                     >
 
                         {category.name}

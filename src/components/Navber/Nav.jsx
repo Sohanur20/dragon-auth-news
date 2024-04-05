@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
-import user from '../../assets/user.png'
+import users from '../../assets/user.png'
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvuder/AuthProvider";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Nav = () => {
+
+
+
+    const { user, logOut } = useContext(AuthContext);
 
     const navlink = <>
 
@@ -11,6 +19,17 @@ const Nav = () => {
 
 
     </>
+
+
+
+    const handleLogOut = () => {
+
+        logOut()
+            .then(
+                toast.success("Log out successfull")
+            )
+            .catch()
+    }
 
 
     return (
@@ -28,7 +47,7 @@ const Nav = () => {
                         </ul>
 
                     </div>
-             
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -38,8 +57,20 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">
-                   <img className="w-12" src={user} alt="" />
-                   <button className="btn btn-success text-white">Login</button>
+                    <img className="w-12" src={users} alt="" />
+
+
+                    {
+                        user ?
+                            <button onClick={handleLogOut} className="btn btn-success text-white">Sign Out</button>
+                            :
+                            <NavLink to='/login'>
+                                <button className="btn btn-success text-white">Login</button>
+                            </NavLink>
+                    }
+                    {/* <NavLink to='/login'>
+                        <button className="btn btn-success text-white">Login</button>
+                    </NavLink> */}
                 </div>
             </div>
         </div>
