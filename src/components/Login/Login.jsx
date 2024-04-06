@@ -3,10 +3,13 @@ import Nav from "../Navber/Nav";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvuder/AuthProvider";
 import { toast } from 'react-toastify';
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-
+    const location = useLocation();
+    console.log('location in the login page ', location);
+    const navigate = useNavigate()
     const { signIn } = useContext(AuthContext)
 
     const handleLogin = (e) => {
@@ -16,17 +19,19 @@ const Login = () => {
         const password = e.target.password.value;
 
         console.log(email, password);
-        signIn(email,password)
-        .then(result =>{
-            console.log(result.user);
-            toast.success('user login success')
-        }
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user);
+                navigate(location?.state ? location.state : '/')
 
-           
-        )
-        .catch(error =>{
-            console.error(error);
-        })
+                toast.success('user login success')
+            }
+
+
+            )
+            .catch(error => {
+                console.error(error);
+            })
 
 
 
